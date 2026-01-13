@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Shark | Martin's Flying Machines</title>
+    <link rel="stylesheet" href="../../css/legacy_modern.css">
+    
+    <style>
+        /* Modern Card-Based Layout for Aircraft Pages */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin-left: 250px;
+            padding: 0;
+        }
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .hero-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .hero-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); background: #1e293b; aspect-ratio: 4/3; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+        .hero-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        
+        .title-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; border: 1px solid #475569; }
+        .aircraft-name { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .aircraft-subtitle { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        
+        .quick-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stat-item { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; }
+        
+        .content-section { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #475569; }
+        .content-section p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .content-section p:last-child { margin-bottom: 0; }
+        
+        .section-title { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #f1f5f9; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .spec-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; transition: transform 0.3s ease; }
+        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: #94a3b8; font-weight: 500; }
+        .spec-value { color: #f1f5f9; font-weight: 600; text-align: right; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #475569; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #fbbf24; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; background: #0f172a; }
+        .gallery-caption { padding: 1rem; font-size: 0.9rem; color: #cbd5e1; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .video-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; }
+        .video-card h3 { color: #fbbf24; margin-bottom: 1rem; font-size: 1.125rem; }
+        .video-card video { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; align-self: flex-start; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(251, 191, 36, 0.3); }
+        .download-btn ion-icon { font-size: 1.25rem; }
+        
+        #simple-nav-sidebar { position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: linear-gradient(180deg, #1a1f35 0%, #0f172a 100%); display: flex; flex-direction: column; z-index: 1000; padding: 2rem 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-brand { padding: 0 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-brand h1 { color: #f1f5f9; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+        .nav-brand p { color: #3b82f6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; margin: 0; }
+        .simple-nav-menu { flex: 1; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .simple-nav-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; color: #94a3b8; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; font-weight: 500; }
+        .simple-nav-item:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .simple-nav-item.active { background: #3b82f6; color: white; }
+        .simple-nav-item ion-icon { font-size: 1.5rem; }
+        .nav-footer { padding: 1.5rem 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .nav-footer p { color: #64748b; font-size: 0.75rem; margin: 0.25rem 0; }
+        @media (max-width: 768px) { body { margin-left: 0; } .hero-section { grid-template-columns: 1fr; } }
+    </style>
+
+</head>
+<body>
+    
+    <div id="simple-nav-sidebar">
+        <div class="nav-brand"><h1>Martin's</h1><p>FLYING MACHINES</p></div>
+        <nav class="simple-nav-menu">
+            <a href="../../index.html" class="simple-nav-item"><ion-icon name="home-outline"></ion-icon><span>Home</span></a>
+            <a href="../../index.html" class="simple-nav-item active"><ion-icon name="airplane-outline"></ion-icon><span>Planes</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="time-outline"></ion-icon><span>Updates</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="information-circle-outline"></ion-icon><span>About</span></a>
+        </nav>
+        <div class="nav-footer"><p>Micro RC Aviation Archive</p><p>© 2004-2015</p></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero - Balanced with Title Card -->
+        <div class="hero-section">
+            <div class="hero-image"><img src="../../Pictures/Shark-IMGP3401-640.jpg" alt="Shark"></div>
+            <div class="hero-info">
+                <div class="title-card">
+                    <h1 class="aircraft-name">Shark</h1>
+                    <p class="aircraft-subtitle">2.65" (6.73 cm) [3.0" flat], 0.017 oz (0.485 grams)</p>
+                    <div class="quick-stats"><div class="stat-item"><div class="stat-label">Wingspan</div><div class="stat-value">2.65" (6.73 cm) [3.0" flat]</div></div><div class="stat-item"><div class="stat-label">Weight</div><div class="stat-value">0.017 oz (0.485 grams)</div></div><div class="stat-item"><div class="stat-label">Control</div><div class="stat-value">1. Leichty Micro, 27MHz, 0.060 grams2. Starving Rabbit, 900MHz FHSS, 0.065 grams</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standalone Description Card - Full Width -->
+        <div class="content-section">
+            <p>The Shark has been on a diet. It now weighs just under 1/2 gram, 0.485 grams to be exact. This is believed to be the first electric-powered radio-controlled fixed-wing aircraft under 1/2 gram. In fact, there are now two Sharks, the second one being a little heavier, but still under 1/2 gram at 0.495 grams.</p><p>There were two developments that made it possible to get under 1/2 gram. The first was a new lipoly battery from Atomic Workshop that weighs 335 mg, before being lightened to 290 mg. The second is a new hand-built brushless motor weighing just 45 mg.</p><p>There is another difference in the second Shark. It uses a new hand-built 900 MHz radio that I built, called a Rabbit, that uses Frequency Hopping Spread Spectrum technology. The new radio weighs 65 mg, which accounts for most of the difference in weight from the first Shark.</p><p>This is the Shark, so named because of the shape of the fin. It is a direct derivative of the Midge. It weighs 0.695 grams, believed to be a new unofficial world record for the lightest flying remote-controlled, electric-powered plane. The maiden flight was at Indoor Night at the 2006 NEAT Fair in New York. It was launched by Matt Keenon and was climbing nicely before pilot error had it crashing into a wall.</p><p>Later in the evening it was launched by the previous record holder, Robert Guillot, in front of the assembled crowd. It didn't climb quite as well, but it flew.</p><p>One of the differences from the Midge is the motor. The Shark uses a stripped down version of the 3.2 mm Shicoh coreless motor. It has no case, no flux ring, and a carbon shaft.</p><p>Another difference is the receiver. The Shark uses a modified version of the current latest 27 MHz receiver from Nick Leichty. As shipped the receiver weighs only 75 mg, but I reduced this to 60 mg by replacing the 8-pin PIC chip with a 6-pin chip programmed with a version of my YAPP code to provide only two channels of operation, throttle and rudder.</p><p>The only other difference is that the airframe is smaller, at 2.65 inches wingspan.</p><p>Your browser does not support the video tag. Download Shark_485mg_out2.wmv</p>
+        </div>
+
+        <section class="specs-section"><div class="specs-grid"><div class="spec-card"><h3>Dimensions</h3><div class="spec-row"><span class="spec-label">Wingspan</span><span class="spec-value">2.65" (6.73 cm) [3.0" flat]</span></div><div class="spec-row"><span class="spec-label">Chord</span><span class="spec-value">1.05" (2.67 cm)</span></div><div class="spec-row"><span class="spec-label">Wing Area</span><span class="spec-value">2.84 sq.in (18.3 sq.cm)</span></div><div class="spec-row"><span class="spec-label">Weight</span><span class="spec-value">0.017 oz (0.485 grams)</span></div><div class="spec-row"><span class="spec-label">Wing Loading</span><span class="spec-value">0.86 oz/sq.ft (2.65 g/sq.dm)</span></div></div><div class="spec-card"><h3>Propulsion</h3><div class="spec-row"><span class="spec-label">Brushless Motor</span><span class="spec-value">Motor at 25,000 rpm</span></div><div class="spec-row"><span class="spec-label">Gears</span><span class="spec-value">None - Direct Drive</span></div><div class="spec-row"><span class="spec-label">Propellor</span><span class="spec-value">0.7" x 0.5" (17.8mm x 12.7mm) carbon cloth on computer-designed blank</span></div><div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">8.5 mAH LiPoly, trimmed</span></div></div><div class="spec-card"><h3>Electronics</h3><div class="spec-row"><span class="spec-label">Radio</span><span class="spec-value">1. Leichty Micro, 27MHz, 0.060 grams2. Starving Rabbit, 900MHz FHSS, 0.065 grams</span></div><div class="spec-row"><span class="spec-label">Control</span><span class="spec-value">Rudder, Throttle</span></div><div class="spec-row"><span class="spec-label">Antenna</span><span class="spec-value">1. 4" Litz wire monopole2. 3.25" dipole</span></div><div class="spec-row"><span class="spec-label">Receiver</span><span class="spec-value">60mg</span></div></div><div class="spec-card"><h3>Construction</h3><div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Carbon rod, fuselage stick 0.010" (0.25 mm), wing and tail 0.005" (0.13mm).  Covering 2 um, 2.2 g/m^2 mylar</span></div><div class="spec-row"><span class="spec-label">Airframe+switch</span><span class="spec-value">60mg</span></div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Image Gallery</h2><div class="gallery-grid"><div class="gallery-item"><a href="../../Images/Mosq-2871-60.jpg" target="_blank"><img src="../../Images/Mosq-2871-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Images/Tripe3-2573-60.jpg" target="_blank"><img src="../../Images/Tripe3-2573-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP4296-640.jpg" target="_blank"><img src="../../Pictures/Shark-IMGP4296-100.jpg" alt="Pair of Sharks"></a><div class="gallery-caption">Pair of Sharks</div></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP4275-640.jpg" target="_blank"><img src="../../Images/Shark-IMGP4275-100.jpg" alt="0.495 grams"></a><div class="gallery-caption">0.495 grams</div></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP3595-640.jpg" target="_blank"><img src="../../Images/Shark-IMGP3595-100.jpg" alt="2.65" Wingspan"></a><div class="gallery-caption">2.65" Wingspan</div></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP4302_640.jpg" target="_blank"><img src="../../Images/Shark-IMGP4302_100.jpg" alt="900MHz Rabbit"></a><div class="gallery-caption">900MHz Rabbit</div></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP4315_640.jpg" target="_blank"><img src="../../Images/Shark-IMGP4315_100.jpg" alt="Brushless Motor"></a><div class="gallery-caption">Brushless Motor</div></div><div class="gallery-item"><a href="../../Pictures/Shark-IMGP4327_640.jpg" target="_blank"><img src="../../Images/Shark-IMGP4327_100.jpg" alt="Motor at 25,000 rpm"></a><div class="gallery-caption">Motor at 25,000 rpm</div></div><div class="gallery-item"><a href="../../Pictures/Shark-2_5_2008 8_06 PM_0002.jpg" target="_blank"><img src="../../Images/Shark-2_5_20088_06PM_0002-100.jpg" alt="In Flight"></a><div class="gallery-caption">In Flight</div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Videos</h2><div class="videos-grid"><div class="video-card"><h3>Shark_485mg_out2.wmv</h3><video controls><source src="../../Videos/Shark_485mg_out2.wmv"></video><a href="../../Videos/Shark_485mg_out2.wmv" download class="download-btn"><ion-icon name="download-outline"></ion-icon> Download</a></div><div class="video-card"><h3>Shark_FHSS_2_out.wmv</h3><video controls><source src="../../Videos/Shark_FHSS_2_out.wmv"></video><a href="../../Videos/Shark_FHSS_2_out.wmv" download class="download-btn"><ion-icon name="download-outline"></ion-icon> Download</a></div></div></section>
+        <section class="content-section"><h2 class="section-title">Plans & Downloads</h2><div style="display: flex; flex-wrap: wrap; gap: 1rem;"><a href="../../Plans/SHARK.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download SHARK.pdf</a></div></section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body></html>
