@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>P-51 | Martin's Flying Machines</title>
+    <link rel="stylesheet" href="../../css/legacy_modern.css">
+    
+    <style>
+        /* Modern Card-Based Layout for Aircraft Pages */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin-left: 250px;
+            padding: 0;
+        }
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .hero-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .hero-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); background: #1e293b; aspect-ratio: 4/3; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+        .hero-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        
+        .title-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; border: 1px solid #475569; }
+        .aircraft-name { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .aircraft-subtitle { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        
+        .quick-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stat-item { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; }
+        
+        .content-section { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #475569; }
+        .content-section p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .content-section p:last-child { margin-bottom: 0; }
+        
+        .section-title { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #f1f5f9; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .spec-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; transition: transform 0.3s ease; }
+        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: #94a3b8; font-weight: 500; }
+        .spec-value { color: #f1f5f9; font-weight: 600; text-align: right; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #475569; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #fbbf24; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; background: #0f172a; }
+        .gallery-caption { padding: 1rem; font-size: 0.9rem; color: #cbd5e1; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .video-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; }
+        .video-card h3 { color: #fbbf24; margin-bottom: 1rem; font-size: 1.125rem; }
+        .video-card video { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; align-self: flex-start; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(251, 191, 36, 0.3); }
+        .download-btn ion-icon { font-size: 1.25rem; }
+        
+        #simple-nav-sidebar { position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: linear-gradient(180deg, #1a1f35 0%, #0f172a 100%); display: flex; flex-direction: column; z-index: 1000; padding: 2rem 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-brand { padding: 0 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-brand h1 { color: #f1f5f9; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+        .nav-brand p { color: #3b82f6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; margin: 0; }
+        .simple-nav-menu { flex: 1; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .simple-nav-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; color: #94a3b8; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; font-weight: 500; }
+        .simple-nav-item:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .simple-nav-item.active { background: #3b82f6; color: white; }
+        .simple-nav-item ion-icon { font-size: 1.5rem; }
+        .nav-footer { padding: 1.5rem 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .nav-footer p { color: #64748b; font-size: 0.75rem; margin: 0.25rem 0; }
+        @media (max-width: 768px) { body { margin-left: 0; } .hero-section { grid-template-columns: 1fr; } }
+    </style>
+
+</head>
+<body>
+    
+    <div id="simple-nav-sidebar">
+        <div class="nav-brand"><h1>Martin's</h1><p>FLYING MACHINES</p></div>
+        <nav class="simple-nav-menu">
+            <a href="../../index.html" class="simple-nav-item"><ion-icon name="home-outline"></ion-icon><span>Home</span></a>
+            <a href="../../index.html" class="simple-nav-item active"><ion-icon name="airplane-outline"></ion-icon><span>Planes</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="time-outline"></ion-icon><span>Updates</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="information-circle-outline"></ion-icon><span>About</span></a>
+        </nav>
+        <div class="nav-footer"><p>Micro RC Aviation Archive</p><p>© 2004-2015</p></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero - Balanced with Title Card -->
+        <div class="hero-section">
+            <div class="hero-image"><img src="../../Pictures/P51-5472-1-640.jpg" alt="P-51"></div>
+            <div class="hero-info">
+                <div class="title-card">
+                    <h1 class="aircraft-name">P-51</h1>
+                    <p class="aircraft-subtitle">9.25" (23.5 cm) 1/48 Scale, 0.50 oz (14 grams)</p>
+                    <div class="quick-stats"><div class="stat-item"><div class="stat-label">Wingspan</div><div class="stat-value">9.25" (23.5 cm) 1/48 Scale</div></div><div class="stat-item"><div class="stat-label">Weight</div><div class="stat-value">0.50 oz (14 grams)</div></div><div class="stat-item"><div class="stat-label">Control</div><div class="stat-value">Wing controls</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standalone Description Card - Full Width -->
+        <div class="content-section">
+            <p>This is my 6 channel 1/48 scale Mustang P-51, built for the KIEF 2009 indoor electric meeting, where it won the award for "Best Micro Aircraft". It has a 6 channel radio controlling throttle, rudder, elevator, aileron, flaps, retracts. It also has wing-tip lights. The flaps and retracts move slowly over a 2-3 second period, controlled by the transmitter. The retracts lock in both the raised and lowered positions. You can see the mechanism in one of the videos below. They are based on a design published on RC Groups by cmartin.</p><p>Apart from the retracts the most interesting thing to me about this plane is the receiver. I built it especially for this plane. It is a 6 channel adaptation of the 4 channel Rabbit receiver that I designed and that Nick Leichty now makes and sells (see Microflier RC ). It uses a different microprocessor that has 50% more pins than the standard one, and I use them all. The receiver uses a very similar frequency hopping spread spectrum technique for frequency independence. It is a hybrid in that it generates actuator output on 4 channels, for aileron, rudder, elevator and flaps, and generates servo output on two channels, for external brushless motor controller and retracts servo (also from Nick Leichty). All 4 actuator outputs are amplified for use with lower resistance actuators. It simultaneously generates an amplified output for a brushed motor in case I want to switch to that, but I don't think that will be used. The receiver autonomously generates a short pulse once per second that is used to drive the wing-tip lights. The whole receiver has the same footprint as a standard Rabbit, 0.25" square, but is thicker at about 0.25". It weighs about 0.2 grams.</p><p>Robert Guillot had been nagging me to make a scale model with a full fuselage, so when I told him I was thinking about a plane with retracts he suggested doing a 1/48 scale Mustang. He even sent me the design and graphics for the 1/72 model he had made. Two months and a lot of hard work later, here it is.</p><p>I finished the plane on the Monday before KIEF, intending to test fly it, but it then rained for two days after having been dry all summer. So the maiden had to be at KIEF. Given the high wing loading we knew it had to fly fast, so I didn't want to risk having the landing gear down for the initial flights. Nick Leichty did a fantastic job launching the plane for all of its flights at Kief. I flew it a half a dozen times, and while I was getting better, every flight ended involuntarily (aka crash). At that point Matt Keennon offered to pilot it, and immediately it looked a lot better in the air, with Matt's first flight being twice the duration of my best, though still ending in a snap roll into the ground. Matt really is an amazing pilot.</p><p>I went around to as many of the assembled experts as I could find to get their opinions on how to improve the stability. Where else could you get such a fantastic resource to help trim out an airplane? Everyone was very helpful. The most common suggestion was to fly it at full throttle. I implemented some of the suggestions and things started getting better. Matt was able to fly as long as the battery would last, doing very smooth, controlled figure eights, on full throttle. Remember, this motor can take a plane weighing nearly twice as much vertical.</p><p>During the noontime show we lowered and raised the landing gear in flight, but there was nowhere to do a wheels down landing. Matt made full use of the 400ft by 200ft main flying area and even made it look a little tight. Wheels-down landings will be difficult given the need to fly at full throttle. It has done an ROG with full flaps, but as of this writing it is yet to land on its wheels.</p><p>I've upgraded the receiver to 8 channels using the new Hip-Hop-2 system. Channel 7 is used to switch on and off the flashing nav lights. I'm still trying to decide what to do with the 8th channel. Thayer Syme suggested dropping a long range fuel tank, as these planes used to do. We'll see.</p>
+        </div>
+
+        <section class="specs-section"><div class="specs-grid"><div class="spec-card"><h3>Dimensions</h3><div class="spec-row"><span class="spec-label">Wingspan</span><span class="spec-value">9.25" (23.5 cm) 1/48 Scale</span></div><div class="spec-row"><span class="spec-label">Chord</span><span class="spec-value">1.6" (4 cm)</span></div><div class="spec-row"><span class="spec-label">Wing Area</span><span class="spec-value">14.8 sq.in (96 sq.cm)</span></div><div class="spec-row"><span class="spec-label">Weight</span><span class="spec-value">0.50 oz (14 grams)</span></div><div class="spec-row"><span class="spec-label">Wing Loading</span><span class="spec-value">4.9 oz/sq.ft (15 g/sq.dm)</span></div></div><div class="spec-card"><h3>Propulsion</h3><div class="spec-row"><span class="spec-label">Motor</span><span class="spec-value">Hexatronix 2 gram brushless outrunner with Turnigy TGY DP 3A 1S speed controller</span></div><div class="spec-row"><span class="spec-label">Gears</span><span class="spec-value">None</span></div><div class="spec-row"><span class="spec-label">Propellor</span><span class="spec-value">GWS 2.5" x 1.0"</span></div><div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">70mAH LiPoly</span></div></div><div class="spec-card"><h3>Electronics</h3><div class="spec-row"><span class="spec-label">Radio</span><span class="spec-value">Custom 6 Channel Rabbit Hip-Hop FHSS, 0.25" cube, 0.2g (1/100 oz)</span></div><div class="spec-row"><span class="spec-label">Wing controls</span><span class="spec-value">Wing controls</span></div><div class="spec-row"><span class="spec-label">Antenna</span><span class="spec-value">Dipole</span></div><div class="spec-row"><span class="spec-label">Actuators/Servos</span><span class="spec-value">MicroAct actuators on elevator, rudder, aileron, flapsLeichty servo on retracts</span></div></div><div class="spec-card"><h3>Construction</h3><div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Balsa wingframe, 0.025" Durabatics covering</span></div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Image Gallery</h2><div class="gallery-grid"><div class="gallery-item"><a href="../../Images/Mosq-2871-60.jpg" target="_blank"><img src="../../Images/Mosq-2871-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Images/Tripe3-2573-60.jpg" target="_blank"><img src="../../Images/Tripe3-2573-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5443-640.jpg" target="_blank"><img src="../../Images/P51-5443-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5444-640.jpg" target="_blank"><img src="../../Images/P51-5444-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5445-640.jpg" target="_blank"><img src="../../Images/P51-5445-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5447-640.jpg" target="_blank"><img src="../../Images/P51-5447-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5439-640.jpg" target="_blank"><img src="../../Images/P51-5439-100.jpg" alt="Wingtip lights"></a><div class="gallery-caption">Wingtip lights</div></div><div class="gallery-item"><a href="../../Pictures/P51-5446-640.jpg" target="_blank"><img src="../../Images/P51-5446-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5453-640.jpg" target="_blank"><img src="../../Images/P51-5453-100.jpg" alt="Wheels up"></a><div class="gallery-caption">Wheels up</div></div><div class="gallery-item"><a href="../../Pictures/P51-5451-640.jpg" target="_blank"><img src="../../Images/P51-5451-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5452-640.jpg" target="_blank"><img src="../../Images/P51-5452-100.jpg" alt="Flaps down"></a><div class="gallery-caption">Flaps down</div></div><div class="gallery-item"><a href="../../Pictures/P51-5449-640.jpg" target="_blank"><img src="../../Images/P51-5449-100.jpg" alt="The pilot, a Rabbit 6"></a><div class="gallery-caption">The pilot, a Rabbit 6</div></div><div class="gallery-item"><a href="../../Pictures/P51-5480-640.jpg" target="_blank"><img src="../../Images/P51-5480-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5482-640.jpg" target="_blank"><img src="../../Images/P51-5482-100.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/P51-5359-640.jpg" target="_blank"><img src="../../Images/P51-5359-100.jpg" alt="Retract lock"></a><div class="gallery-caption">Retract lock</div></div><div class="gallery-item"><a href="../../Pictures/P51-5379-640.jpg" target="_blank"><img src="../../Images/P51-5379-100.jpg" alt="Retract lock"></a><div class="gallery-caption">Retract lock</div></div><div class="gallery-item"><a href="../../Pictures/P51-5358-640.jpg" target="_blank"><img src="../../Images/P51-5358-100.jpg" alt="Retract lock"></a><div class="gallery-caption">Retract lock</div></div><div class="gallery-item"><a href="../../Pictures/P51-5491-640.jpg" target="_blank"><img src="../../Images/P51-5491-100.jpg" alt="Wing controls"></a><div class="gallery-caption">Wing controls</div></div><div class="gallery-item"><a href="../../Pictures/P51-5493-640.jpg" target="_blank"><img src="../../Images/P51-5493-100.jpg" alt="Wing controls"></a><div class="gallery-caption">Wing controls</div></div></div></section>
+        
+        <section class="content-section"><h2 class="section-title">Plans & Downloads</h2><div style="display: flex; flex-wrap: wrap; gap: 1rem;"><a href="../../Plans/P-51_plans.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download P-51_plans.pdf</a></div></section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body></html>

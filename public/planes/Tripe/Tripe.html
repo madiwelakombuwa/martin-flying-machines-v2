@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Tripe | Martin's Flying Machines</title>
+    <link rel="stylesheet" href="../../css/legacy_modern.css">
+    
+    <style>
+        /* Modern Card-Based Layout for Aircraft Pages */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin-left: 250px;
+            padding: 0;
+        }
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .hero-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .hero-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); background: #1e293b; aspect-ratio: 4/3; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+        .hero-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        
+        .title-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; border: 1px solid #475569; }
+        .aircraft-name { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .aircraft-subtitle { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        
+        .quick-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stat-item { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; }
+        
+        .content-section { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #475569; }
+        .content-section p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .content-section p:last-child { margin-bottom: 0; }
+        
+        .section-title { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #f1f5f9; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .spec-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; transition: transform 0.3s ease; }
+        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: #94a3b8; font-weight: 500; }
+        .spec-value { color: #f1f5f9; font-weight: 600; text-align: right; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #475569; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #fbbf24; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; background: #0f172a; }
+        .gallery-caption { padding: 1rem; font-size: 0.9rem; color: #cbd5e1; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .video-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; }
+        .video-card h3 { color: #fbbf24; margin-bottom: 1rem; font-size: 1.125rem; }
+        .video-card video { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; align-self: flex-start; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(251, 191, 36, 0.3); }
+        .download-btn ion-icon { font-size: 1.25rem; }
+        
+        #simple-nav-sidebar { position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: linear-gradient(180deg, #1a1f35 0%, #0f172a 100%); display: flex; flex-direction: column; z-index: 1000; padding: 2rem 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-brand { padding: 0 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-brand h1 { color: #f1f5f9; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+        .nav-brand p { color: #3b82f6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; margin: 0; }
+        .simple-nav-menu { flex: 1; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .simple-nav-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; color: #94a3b8; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; font-weight: 500; }
+        .simple-nav-item:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .simple-nav-item.active { background: #3b82f6; color: white; }
+        .simple-nav-item ion-icon { font-size: 1.5rem; }
+        .nav-footer { padding: 1.5rem 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .nav-footer p { color: #64748b; font-size: 0.75rem; margin: 0.25rem 0; }
+        @media (max-width: 768px) { body { margin-left: 0; } .hero-section { grid-template-columns: 1fr; } }
+    </style>
+
+</head>
+<body>
+    
+    <div id="simple-nav-sidebar">
+        <div class="nav-brand"><h1>Martin's</h1><p>FLYING MACHINES</p></div>
+        <nav class="simple-nav-menu">
+            <a href="../../index.html" class="simple-nav-item"><ion-icon name="home-outline"></ion-icon><span>Home</span></a>
+            <a href="../../index.html" class="simple-nav-item active"><ion-icon name="airplane-outline"></ion-icon><span>Planes</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="time-outline"></ion-icon><span>Updates</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="information-circle-outline"></ion-icon><span>About</span></a>
+        </nav>
+        <div class="nav-footer"><p>Micro RC Aviation Archive</p><p>© 2004-2015</p></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero - Balanced with Title Card -->
+        <div class="hero-section">
+            <div class="hero-image"><img src="" alt="Tripe"></div>
+            <div class="hero-info">
+                <div class="title-card">
+                    <h1 class="aircraft-name">Tripe</h1>
+                    <p class="aircraft-subtitle">5.75" (14.6 cm) [6" flat], 0.38 oz (10.8 grams)</p>
+                    <div class="quick-stats"><div class="stat-item"><div class="stat-label">Wingspan</div><div class="stat-value">5.75" (14.6 cm) [6" flat]</div></div><div class="stat-item"><div class="stat-label">Weight</div><div class="stat-value">0.38 oz (10.8 grams)</div></div><div class="stat-item"><div class="stat-label">Control</div><div class="stat-value">JMP Combo</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standalone Description Card - Full Width -->
+        <div class="content-section">
+            <p>Having built the Mono and the Bipe, the next obvious plane was the Tripe. This time I decided on 6" span since the 3 wings would make up the area. I also designed a built-up fuselage, still using carbon rods.</p><p>On the maiden flight, after several ground loops, I punched in full throttle and it flew well right away, though I did have to move the CG forward a little. Now it is a really stable and reliable flier. I usually fly it, or the Bipe, first during an evening's flying.</p><p>Your browser does not support the video tag. Download TripeMaiden.WMV Martin's Tripe Maiden Flight</p>
+        </div>
+
+        <section class="specs-section"><div class="specs-grid"><div class="spec-card"><h3>Dimensions</h3><div class="spec-row"><span class="spec-label">Wingspan</span><span class="spec-value">5.75" (14.6 cm) [6" flat]</span></div><div class="spec-row"><span class="spec-label">Chord</span><span class="spec-value">1.75" (4.4 cm)</span></div><div class="spec-row"><span class="spec-label">Wing Area</span><span class="spec-value">29.2 sq.in (188 sq.cm)</span></div><div class="spec-row"><span class="spec-label">Weight</span><span class="spec-value">0.38 oz (10.8 grams)</span></div><div class="spec-row"><span class="spec-label">Wing Loading</span><span class="spec-value">1.87 oz/sq.ft (5.74 g/sq.dm)</span></div></div><div class="spec-card"><h3>Propulsion</h3><div class="spec-row"><span class="spec-label">Motor</span><span class="spec-value">MK06-4.5, 6mm, 4.5 ohms</span></div><div class="spec-row"><span class="spec-label">Gears</span><span class="spec-value">6.5:1 Falcon MOD 0.25</span></div><div class="spec-row"><span class="spec-label">Propellor</span><span class="spec-value">3.1" (80mm) Homemade carbon, based on modified U80</span></div><div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">80mAH LiPoly</span></div></div><div class="spec-card"><h3>Electronics</h3><div class="spec-row"><span class="spec-label">Radio</span><span class="spec-value">JMP Combo</span></div><div class="spec-row"><span class="spec-label">Control</span><span class="spec-value">Rudder, Elevator, Throttle</span></div><div class="spec-row"><span class="spec-label">Antenna</span><span class="spec-value">1 piece 38 awg copper, 6cm + 28 turns around 5mm straw + 18cm</span></div><div class="spec-row"><span class="spec-label">Actuators</span><span class="spec-value">Homemade coil 4mm ID, 44awg, 50 ohms, 3mm x 1mm N50 Neodymium magnet</span></div></div><div class="spec-card"><h3>Construction</h3><div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Carbon Rod, mainly 0.020" (0.5 mm) and foodwrap covering (Reynolds Wrap)</span></div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Image Gallery</h2><div class="gallery-grid"><div class="gallery-item"><a href="../../Images/Mosq-2871-60.jpg" target="_blank"><img src="../../Images/Mosq-2871-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Images/Tripe3-2573-60.jpg" target="_blank"><img src="../../Images/Tripe3-2573-60.jpg" alt=""></a></div></div></section>
+        
+        <section class="content-section"><h2 class="section-title">Plans & Downloads</h2><div style="display: flex; flex-wrap: wrap; gap: 1rem;"><a href="../../Plans/MartinsTRIPE.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download MartinsTRIPE.pdf</a></div></section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body></html>

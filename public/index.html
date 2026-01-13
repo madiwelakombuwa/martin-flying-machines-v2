@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin's Flying Machines</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <h1>Martin's</h1>
+            <span>Flying Machines</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" class="active"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+            <li><a href="#aircraft"><ion-icon name="airplane-outline"></ion-icon> Planes</a></li>
+            <li><a href="#updates"><ion-icon name="time-outline"></ion-icon> Updates</a></li>
+            <li><a href="#about"><ion-icon name="information-circle-outline"></ion-icon> About</a></li>
+        </ul>
+
+        <div class="nav-hint">
+            Micro RC Aviation Archive<br>
+            &copy; 2004-2015
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="badge"><ion-icon name="flash-outline"></ion-icon> Micro Aviation Engineering</span>
+            <h1>Mastering the Art of <br><span class="highlight">Micro Flight</span></h1>
+            <p>Exploring the limits of radio-controlled aviation. From extremely detailed 1/48 scale warbirds to
+                sub-gram indoor flyers that push the boundaries of physics.</p>
+
+            <div class="cta-group">
+                <a href="#aircraft" class="btn btn-primary">Explore Fleet</a>
+                <a href="#about" class="btn btn-outline">About Martin</a>
+            </div>
+        </section>
+
+        <!-- Featured Aircraft Grid -->
+        <div class="section-header" id="aircraft">
+            <h2>Featured Aircraft</h2>
+            <a href="#" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View All <ion-icon
+                    name="chevron-forward-outline"></ion-icon></a>
+        </div>
+
+        <div class="grid">
+            <!-- B-25 -->
+            <article class="card">
+                <span class="card-tag">Scale Warbird</span>
+                <!-- Linking to the manual_download folder for assets -->
+                <img src="Pictures/B-25_IMGP5661_640.jpg" alt="B-25 Mitchell" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>B-25 Mitchell</h3>
+                <p>A highly detailed 1/48 scale replica of the legendary B-25 Mitchell bomber.</p>
+                <div class="specs">
+                    <span class="spec-tag">1/48 Scale</span>
+                    <span class="spec-tag">8 Channels</span>
+                </div>
+                <a href="planes/B-25/B-25.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- P-51 -->
+            <article class="card">
+                <span class="card-tag">Scale Warbird</span>
+                <img src="Pictures/P51-5472-1-640.jpg" alt="P-51 Mustang" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>P-51 Mustang</h3>
+                <p>The iconic P-51 Mustang rendered in 1/48 scale with full 6-channel control.</p>
+                <div class="specs">
+                    <span class="spec-tag">1/48 Scale</span>
+                    <span class="spec-tag">6 Channels</span>
+                </div>
+                <a href="planes/P-51/P-51.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Shark -->
+            <article class="card">
+                <span class="card-tag">Micro Mono-plane</span>
+                <img src="Pictures/Shark-IMGP4299_640.jpg" alt="Shark" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Shark</h3>
+                <p>An ultra-lightweight engineering marvel. At under half a gram, the Shark sets records.</p>
+                <div class="specs">
+                    <span class="spec-tag">2.65" Wingspan</span>
+                    <span class="spec-tag">0.495 grams</span>
+                </div>
+                <a href="planes/Shark/Shark-1.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Martin's Midge -->
+            <article class="card">
+                <span class="card-tag">Micro Mono-plane</span>
+                <img src="Pictures/Midge-2907-640.jpg" alt="Midge" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Martin's Midge</h3>
+                <p>A 3.2 inch mono-plane weighing just under a gram. Pure indoor flight.</p>
+                <div class="specs">
+                    <span class="spec-tag">3.2" Wingspan</span>
+                    <span class="spec-tag">0.98 grams</span>
+                </div>
+                <a href="planes/Midge%201.0/Midge-1.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Mosquito -->
+            <article class="card">
+                <span class="card-tag">Micro Mono-plane</span>
+                <img src="Pictures/Mosq-2871-640.jpg" alt="Mosquito" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Mosquito</h3>
+                <p>Slightly larger at 4 inches, the Mosquito is a robust 1.3 gram flyer.</p>
+                <div class="specs">
+                    <span class="spec-tag">4" Wingspan</span>
+                    <span class="spec-tag">1.3 grams</span>
+                </div>
+                <a href="planes/Mosquito%201.3/Mosq-1.3.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Tripe3 -->
+            <article class="card">
+                <span class="card-tag">Tri-plane</span>
+                <img src="Pictures/Tripe3-2573-640.jpg" alt="Tripe3" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Tripe3</h3>
+                <p>A classic tri-plane configuration shrunk down to 3 inches.</p>
+                <div class="specs">
+                    <span class="spec-tag">3" Wingspan</span>
+                    <span class="spec-tag">2.7 grams</span>
+                </div>
+                <a href="planes/Tripe3/Tripe3.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Bipe4 -->
+            <article class="card">
+                <span class="card-tag">Bi-plane</span>
+                <img src="Pictures/Bipe4-IMGP2479.jpg" alt="Bipe4" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Bipe4</h3>
+                <p>A robust 4-inch bi-plane for sub-gram indoor flight fun.</p>
+                <div class="specs">
+                    <span class="spec-tag">4" Wingspan</span>
+                    <span class="spec-tag">2.4 grams</span>
+                </div>
+                <a href="planes/Bipe4/Bipe4.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Mono4 -->
+            <article class="card">
+                <span class="card-tag">Mono-plane</span>
+                <img src="Pictures/Mono4-2510-640.jpg" alt="Mono4" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Mono4</h3>
+                <p>A refined 4-inch monoplane design focusing on stability and simplicity.</p>
+                <div class="specs">
+                    <span class="spec-tag">4" Wingspan</span>
+                    <span class="spec-tag">2.3 grams</span>
+                </div>
+                <a href="planes/Mono4/Mono4.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Martin's IFO -->
+            <article class="card">
+                <span class="card-tag">Flying Wing</span>
+                <img src="Pictures/IFO-IMGP1968.jpg" alt="Martin's IFO" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Martin's IFO</h3>
+                <p>An Indoor Flying Object. 7 inches of slow-flying wing perfection.</p>
+                <div class="specs">
+                    <span class="spec-tag">7" Wingspan</span>
+                    <span class="spec-tag">10 grams</span>
+                </div>
+                <a href="planes/IFO/IFO.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Martin's Tripe -->
+            <article class="card">
+                <span class="card-tag">Tri-plane</span>
+                <img src="Pictures/MartinsTripe2.jpg" alt="Martin's Tripe" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Martin's Tripe</h3>
+                <p>A larger 6-inch tri-plane that handles smoothly at 10 grams.</p>
+                <div class="specs">
+                    <span class="spec-tag">6" Wingspan</span>
+                    <span class="spec-tag">10 grams</span>
+                </div>
+                <a href="planes/Tripe/Tripe.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Martin's Bipe -->
+            <article class="card">
+                <span class="card-tag">Bi-plane</span>
+                <img src="Pictures/Bipe-IMGP2085x.jpg" alt="Martin's Bipe" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Martin's Bipe</h3>
+                <p>The 8-inch bi-plane that started it all. A classic indoor flyer.</p>
+                <div class="specs">
+                    <span class="spec-tag">8" Wingspan</span>
+                    <span class="spec-tag">10 grams</span>
+                </div>
+                <a href="planes/Bipe/Bipe.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+
+            <!-- Martin's Mono -->
+            <article class="card">
+                <span class="card-tag">Mono-plane</span>
+                <img src="Pictures/MartinsMono.jpg" alt="Martin's Mono" class="card-image"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-image-placeholder"
+                    style="display:none; height: 180px; background: #1f2937; border-radius: 8px; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                    <ion-icon name="image-outline"></ion-icon>
+                </div>
+                <h3>Martin's Mono</h3>
+                <p>8-inch monoplane. Simple, elegant, and lightweight at 9 grams.</p>
+                <div class="specs">
+                    <span class="spec-tag">8" Wingspan</span>
+                    <span class="spec-tag">9 grams</span>
+                </div>
+                <a href="planes/Mono/Mono.html" class="btn btn-primary"
+                    style="margin-top: 1.5rem; text-align: center;">View Project</a>
+            </article>
+        </div>
+
+        <!-- Latest Updates -->
+        <div class="section-header" id="updates">
+            <h2>Latest Updates</h2>
+        </div>
+
+        <div class="updates-container">
+            <div class="update-item">
+                <div class="update-icon"><ion-icon name="document-text-outline"></ion-icon></div>
+                <div class="update-content">
+                    <h4>Warbirds at 1:100 Scale Part 1 & 2</h4>
+                    <span>January 1, 2015 &bull; Techniques</span>
+                </div>
+            </div>
+            <div class="update-item">
+                <div class="update-icon"><ion-icon name="document-text-outline"></ion-icon></div>
+                <div class="update-content">
+                    <h4>Micro 900MHz Receiver</h4>
+                    <span>February 10, 2014 &bull; Techniques</span>
+                </div>
+            </div>
+            <div class="update-item">
+                <div class="update-icon"><ion-icon name="cloud-download-outline"></ion-icon></div>
+                <div class="update-content">
+                    <h4>Micro Receiver V3.7 Code</h4>
+                    <span>February 10, 2014 &bull; Techniques</span>
+                </div>
+            </div>
+            <div class="update-item">
+                <div class="update-icon"><ion-icon name="airplane-outline"></ion-icon></div>
+                <div class="update-content">
+                    <h4>Mode 4 Transmitter Paper</h4>
+                    <span>October 31, 2009 &bull; Techniques</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section-header" id="about" style="margin-top: 3rem;">
+            <h2>About</h2>
+        </div>
+        <div class="updates-container">
+            <p style="color: #9ca3af; line-height: 1.6; margin-bottom: 1rem;">
+                "My current interest is in 'micro' radio-controlled planes, by which I mean anything under an ounce, or
+                28 grams.
+                I started in mid-2003 with a Lil Skeeter... After that I started building my own designs."
+            </p>
+            <p style="color: #9ca3af; line-height: 1.6;">
+                - Martin Newell, Thousand Oaks, California
+            </p>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
