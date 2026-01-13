@@ -3,9 +3,8 @@ main = "src/index.js"
 compatibility_date = "2024-01-01"
 
 # Assets configuration for static files
-# Files to ignore are specified in .wranglerignore
 [assets]
-directory = "."
+directory = "public"
 binding = "ASSETS"
 
 # Route configuration (uncomment and modify when deploying)

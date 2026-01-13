@@ -4,8 +4,9 @@
   "description": "Martin's Flying Machines - Micro RC Aviation Archive",
   "main": "src/index.js",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "prebuild": "mkdir -p public && cp -r css planes Pictures Images Videos Plans index.html public/",
+    "dev": "npm run prebuild && wrangler dev",
+    "deploy": "npm run prebuild && wrangler deploy",
     "tail": "wrangler tail"
   },
   "keywords": [
