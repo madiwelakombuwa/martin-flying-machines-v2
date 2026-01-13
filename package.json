@@ -1,0 +1,22 @@
+{
+  "name": "martin-flying-machines",
+  "version": "2.0.0",
+  "description": "Martin's Flying Machines - Micro RC Aviation Archive",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "static-site",
+    "rc-aviation"
+  ],
+  "author": "Antigravity AI",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
