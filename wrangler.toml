@@ -1,4 +1,4 @@
-name = "martin-flying-machines"
+name = "martin-flying-machines-v2"
 main = "src/index.js"
 compatibility_date = "2024-01-01"
 
