@@ -3,20 +3,10 @@ main = "src/index.js"
 compatibility_date = "2024-01-01"
 
 # Assets configuration for static files
+# Files to ignore are specified in .wranglerignore
 [assets]
 directory = "."
 binding = "ASSETS"
-ignore = [
-  "node_modules/**",
-  ".git/**",
-  "src/**",
-  "package.json",
-  "package-lock.json",
-  "bun.lockb",
-  "wrangler.toml",
-  ".gitignore",
-  "DEPLOYMENT.md"
-]
 
 # Route configuration (uncomment and modify when deploying)
 # [[routes]]

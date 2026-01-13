@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json
+bun.lockb
+
+# Source files
+src/
+
+# Configuration files
+package.json
+wrangler.toml
+.gitignore
+.wranglerignore
+
+# Documentation
+DEPLOYMENT.md
+README.md
+
+# Version control
+.git/
+.github/
+
+# Build artifacts
+.wrangler/
+dist/
+worker/
