@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Mono4 | Martin's Flying Machines</title>
+    <link rel="stylesheet" href="../../css/legacy_modern.css">
+    
+    <style>
+        /* Modern Card-Based Layout for Aircraft Pages */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin-left: 250px;
+            padding: 0;
+        }
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .hero-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .hero-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); background: #1e293b; aspect-ratio: 4/3; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+        .hero-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        
+        .title-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; border: 1px solid #475569; }
+        .aircraft-name { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .aircraft-subtitle { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        
+        .quick-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stat-item { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; }
+        
+        .content-section { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #475569; }
+        .content-section p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .content-section p:last-child { margin-bottom: 0; }
+        
+        .section-title { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #f1f5f9; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .spec-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; transition: transform 0.3s ease; }
+        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: #94a3b8; font-weight: 500; }
+        .spec-value { color: #f1f5f9; font-weight: 600; text-align: right; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #475569; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #fbbf24; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; background: #0f172a; }
+        .gallery-caption { padding: 1rem; font-size: 0.9rem; color: #cbd5e1; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .video-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; }
+        .video-card h3 { color: #fbbf24; margin-bottom: 1rem; font-size: 1.125rem; }
+        .video-card video { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; align-self: flex-start; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(251, 191, 36, 0.3); }
+        .download-btn ion-icon { font-size: 1.25rem; }
+        
+        #simple-nav-sidebar { position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: linear-gradient(180deg, #1a1f35 0%, #0f172a 100%); display: flex; flex-direction: column; z-index: 1000; padding: 2rem 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-brand { padding: 0 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-brand h1 { color: #f1f5f9; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+        .nav-brand p { color: #3b82f6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; margin: 0; }
+        .simple-nav-menu { flex: 1; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .simple-nav-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; color: #94a3b8; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; font-weight: 500; }
+        .simple-nav-item:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .simple-nav-item.active { background: #3b82f6; color: white; }
+        .simple-nav-item ion-icon { font-size: 1.5rem; }
+        .nav-footer { padding: 1.5rem 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .nav-footer p { color: #64748b; font-size: 0.75rem; margin: 0.25rem 0; }
+        @media (max-width: 768px) { body { margin-left: 0; } .hero-section { grid-template-columns: 1fr; } }
+    </style>
+
+</head>
+<body>
+    
+    <div id="simple-nav-sidebar">
+        <div class="nav-brand"><h1>Martin's</h1><p>FLYING MACHINES</p></div>
+        <nav class="simple-nav-menu">
+            <a href="../../index.html" class="simple-nav-item"><ion-icon name="home-outline"></ion-icon><span>Home</span></a>
+            <a href="../../index.html" class="simple-nav-item active"><ion-icon name="airplane-outline"></ion-icon><span>Planes</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="time-outline"></ion-icon><span>Updates</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="information-circle-outline"></ion-icon><span>About</span></a>
+        </nav>
+        <div class="nav-footer"><p>Micro RC Aviation Archive</p><p>© 2004-2015</p></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero - Balanced with Title Card -->
+        <div class="hero-section">
+            <div class="hero-image"><img src="../../Pictures/Mono4-2510-640.jpg" alt="Mono4"></div>
+            <div class="hero-info">
+                <div class="title-card">
+                    <h1 class="aircraft-name">Mono4</h1>
+                    <p class="aircraft-subtitle">3.7" (9.4 cm) [4" flat], 0.082 oz (2.3 grams)</p>
+                    <div class="quick-stats"><div class="stat-item"><div class="stat-label">Wingspan</div><div class="stat-value">3.7" (9.4 cm) [4" flat]</div></div><div class="stat-item"><div class="stat-label">Weight</div><div class="stat-value">0.082 oz (2.3 grams)</div></div><div class="stat-item"><div class="stat-label">Control</div><div class="stat-value">Leichty Micro 3 Channel, 27MHz, 180 mg</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standalone Description Card - Full Width -->
+        <div class="content-section">
+            <p>Here's "Mono4", a half-scale version of my 8" Mono, at 3.9" (10cm) wingspan and 2.3 grams, with Nick Leichty's amazing 180mg receiver, using just rudder and throttle.</p><p>After a couple of ROG's in the house I took it outside at mid-day in a very light breeze. Flew half a dozen circuits of the lawn, then a couple of figure eights. Amazingly stable. It got high enough that I mis-read which direction it was going (easy to do with a 4" transparent plane) and impaled it on a tree. Needed a ladder to get it down, but no damage, and I carried on flying.</p><p>Since then I have flown it many times, indoor and out. As long as the wind is very low it flies just like much bigger planes - very stable. In the videos it appears to be going very fast, zipping from one end of my garden to the other in seconds. In reality it was just flying fairly close to me at a modest speed. Its small size makes it appear much further away and faster than it is.</p>
+        </div>
+
+        <section class="specs-section"><div class="specs-grid"><div class="spec-card"><h3>Dimensions</h3><div class="spec-row"><span class="spec-label">Wingspan</span><span class="spec-value">3.7" (9.4 cm) [4" flat]</span></div><div class="spec-row"><span class="spec-label">Chord</span><span class="spec-value">1.5" (3.8 cm)</span></div><div class="spec-row"><span class="spec-label">Wing Area</span><span class="spec-value">5.35 sq.in (34.5 sq.cm)</span></div><div class="spec-row"><span class="spec-label">Weight</span><span class="spec-value">0.082 oz (2.3 grams)</span></div><div class="spec-row"><span class="spec-label">Wing Loading</span><span class="spec-value">2.21 oz/sq.ft (6.73 g/sq.dm)</span></div></div><div class="spec-card"><h3>Propulsion</h3><div class="spec-row"><span class="spec-label">Motor</span><span class="spec-value">MK04-24, 4mm, 28 ohms</span></div><div class="spec-row"><span class="spec-label">Gears</span><span class="spec-value">5:1 Didel MOD 0.2</span></div><div class="spec-row"><span class="spec-label">Propellor</span><span class="spec-value">2" x 1.5" (51mm x 38mm) homemade carbon on hand-carved blank</span></div><div class="spec-row"><span class="spec-label">Battery</span><span class="spec-value">20mAH LiPoly</span></div></div><div class="spec-card"><h3>Electronics</h3><div class="spec-row"><span class="spec-label">Radio</span><span class="spec-value">Leichty Micro 3 Channel, 27MHz, 180 mg</span></div><div class="spec-row"><span class="spec-label">Control</span><span class="spec-value">Rudder, Throttle</span></div><div class="spec-row"><span class="spec-label">Antenna</span><span class="spec-value">4" Litz wire</span></div></div><div class="spec-card"><h3>Construction</h3><div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Carbon Rod, mainly 0.012" (0.3 mm) and foodwrap covering (Reynolds Wrap)</span></div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Image Gallery</h2><div class="gallery-grid"><div class="gallery-item"><a href="../../Images/Mosq-2871-60.jpg" target="_blank"><img src="../../Images/Mosq-2871-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Images/Tripe3-2573-60.jpg" target="_blank"><img src="../../Images/Tripe3-2573-60.jpg" alt=""></a></div><div class="gallery-item"><a href="../../Pictures/Mono4-2494-640.jpg" target="_blank"><img src="../../Images/Mono4-2494-100.jpg" alt="Mono4 on Plan"></a><div class="gallery-caption">Mono4 on Plan</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-2497-640.jpg" target="_blank"><img src="../../Images/Mono4-2497-100.jpg" alt="Mono4 & Bipe4"></a><div class="gallery-caption">Mono4 & Bipe4</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-2500-640.jpg" target="_blank"><img src="../../Images/Mono4-2500-100.jpg" alt="Mono4 & Bipe4"></a><div class="gallery-caption">Mono4 & Bipe4</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-2503-640.jpg" target="_blank"><img src="../../Images/Mono4-2503-100.jpg" alt="Mono4 2.3grams"></a><div class="gallery-caption">Mono4 2.3grams</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-2505-640.jpg" target="_blank"><img src="../../Images/Mono4-2505-100.jpg" alt="Mono4 & Mono"></a><div class="gallery-caption">Mono4 & Mono</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-2506-640.jpg" target="_blank"><img src="../../Images/Mono4-2506-100.jpg" alt="Mono4 & Mono"></a><div class="gallery-caption">Mono4 & Mono</div></div><div class="gallery-item"><a href="../../Pictures/Mono4-01-068.jpg" target="_blank"><img src="../../Images/Mono4-01-068-100.jpg" alt="Mono4 Closeup"></a><div class="gallery-caption">Mono4 Closeup</div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Videos</h2><div class="videos-grid"><div class="video-card"><h3>31722Mono4-full-512.wmv</h3><video controls><source src="https://web.archive.org/web/20151130025524/http://rcgroups.com/gallery/data/511/31722Mono4-full-512.wmv"></video><a href="https://web.archive.org/web/20151130025524/http://rcgroups.com/gallery/data/511/31722Mono4-full-512.wmv" download class="download-btn"><ion-icon name="download-outline"></ion-icon> Download</a></div></div></section>
+        <section class="content-section"><h2 class="section-title">Plans & Downloads</h2><div style="display: flex; flex-wrap: wrap; gap: 1rem;"><a href="../../Plans/MONO4.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download MONO4.pdf</a></div></section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body></html>

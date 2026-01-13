@@ -1,0 +1,304 @@
+:root {
+    --bg-body: #050810;
+    --bg-sidebar: #0a0e17;
+    --bg-card: #111625;
+    --bg-feature: #151a2d;
+    /* Hero bg */
+    --primary: #2d6cdf;
+    /* Button blue */
+    --primary-hover: #4285f4;
+    --text-main: #ffffff;
+    --text-muted: #8b949e;
+    --accent-green: #34d399;
+    /* For 'Micro Flight' text */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --border-radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    padding: 2rem;
+    position: fixed;
+    height: 100vh;
+    border-right: 1px solid #1f2937;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.logo h1 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.logo span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.nav-hint {
+    font-size: 0.8rem;
+    color: #4b5563;
+    margin-top: auto;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    padding: 2rem;
+    /* max-width removed for full width */
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--bg-feature) 0%, #0d111d 100%);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #1f2937;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(45, 108, 223, 0.2);
+    color: #60a5fa;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero .highlight {
+    color: transparent;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.hero p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-outline {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-left: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Featured Aircraft Grid */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #374151;
+}
+
+.card-tag {
+    background-color: #1f2937;
+    color: #9ca3af;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    background-color: #0d1117;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+}
+
+/* Fallback when image is missing but we want to show something nicer than broken icon */
+.card-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    color: #4b5563;
+    font-size: 2rem;
+}
+
+.card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.specs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.spec-tag {
+    background-color: #1f2937;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #d1d5db;
+}
+
+/* Updates Section */
+.updates-container {
+    background-color: var(--bg-card);
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.update-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #1f2937;
+    display: flex;
+    gap: 1rem;
+}
+
+.update-item:last-child {
+    border-bottom: none;
+}
+
+.update-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(45, 108, 223, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.update-content h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.update-content span {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+/* Missing Assets Handling */
+img[src=""],
+img:not([src]) {
+    opacity: 0;
+}

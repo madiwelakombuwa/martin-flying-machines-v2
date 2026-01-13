@@ -10,7 +10,6 @@ package-lock.json
 # Build outputs
 dist/
 worker/
-public/
 
 # Environment files
 .env

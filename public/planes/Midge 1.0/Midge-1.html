@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Midge | Martin's Flying Machines</title>
+    <link rel="stylesheet" href="../../css/legacy_modern.css">
+    
+    <style>
+        /* Modern Card-Based Layout for Aircraft Pages */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin-left: 250px;
+            padding: 0;
+        }
+        .page-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        .hero-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .hero-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); background: #1e293b; aspect-ratio: 4/3; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
+        .hero-info { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+        
+        .title-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; border: 1px solid #475569; }
+        .aircraft-name { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+        .aircraft-subtitle { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        
+        .quick-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .stat-item { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #3b82f6; }
+        .stat-label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.25rem; font-weight: 600; color: #f1f5f9; }
+        
+        .content-section { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #475569; }
+        .content-section p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1rem; }
+        .content-section p:last-child { margin-bottom: 0; }
+        
+        .section-title { font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: #f1f5f9; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .spec-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; transition: transform 0.3s ease; }
+        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: #94a3b8; font-weight: 500; }
+        .spec-value { color: #f1f5f9; font-weight: 600; text-align: right; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #475569; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #fbbf24; }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; background: #0f172a; }
+        .gallery-caption { padding: 1rem; font-size: 0.9rem; color: #cbd5e1; text-align: center; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .video-card { background: #1e293b; border-radius: 12px; padding: 1.5rem; border: 1px solid #475569; }
+        .video-card h3 { color: #fbbf24; margin-bottom: 1rem; font-size: 1.125rem; }
+        .video-card video { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .download-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; align-self: flex-start; }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(251, 191, 36, 0.3); }
+        .download-btn ion-icon { font-size: 1.25rem; }
+        
+        #simple-nav-sidebar { position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: linear-gradient(180deg, #1a1f35 0%, #0f172a 100%); display: flex; flex-direction: column; z-index: 1000; padding: 2rem 0; border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-brand { padding: 0 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-brand h1 { color: #f1f5f9; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem 0; }
+        .nav-brand p { color: #3b82f6; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; margin: 0; }
+        .simple-nav-menu { flex: 1; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .simple-nav-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; color: #94a3b8; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; font-weight: 500; }
+        .simple-nav-item:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .simple-nav-item.active { background: #3b82f6; color: white; }
+        .simple-nav-item ion-icon { font-size: 1.5rem; }
+        .nav-footer { padding: 1.5rem 1.5rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
+        .nav-footer p { color: #64748b; font-size: 0.75rem; margin: 0.25rem 0; }
+        @media (max-width: 768px) { body { margin-left: 0; } .hero-section { grid-template-columns: 1fr; } }
+    </style>
+
+</head>
+<body>
+    
+    <div id="simple-nav-sidebar">
+        <div class="nav-brand"><h1>Martin's</h1><p>FLYING MACHINES</p></div>
+        <nav class="simple-nav-menu">
+            <a href="../../index.html" class="simple-nav-item"><ion-icon name="home-outline"></ion-icon><span>Home</span></a>
+            <a href="../../index.html" class="simple-nav-item active"><ion-icon name="airplane-outline"></ion-icon><span>Planes</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="time-outline"></ion-icon><span>Updates</span></a>
+            <a href="#" class="simple-nav-item"><ion-icon name="information-circle-outline"></ion-icon><span>About</span></a>
+        </nav>
+        <div class="nav-footer"><p>Micro RC Aviation Archive</p><p>© 2004-2015</p></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero - Balanced with Title Card -->
+        <div class="hero-section">
+            <div class="hero-image"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Pictures/Midge-2907-640.jpg" alt="Midge"></div>
+            <div class="hero-info">
+                <div class="title-card">
+                    <h1 class="aircraft-name">Midge</h1>
+                    <p class="aircraft-subtitle">3.2" (8.1 cm) [3.5" flat], 0.03 oz (0.845 grams)</p>
+                    <div class="quick-stats"><div class="stat-item"><div class="stat-label">Wingspan</div><div class="stat-value">3.2" (8.1 cm) [3.5" flat]</div></div><div class="stat-item"><div class="stat-label">Weight</div><div class="stat-value">0.03 oz (0.845 grams)</div></div><div class="stat-item"><div class="stat-label">Control</div><div class="stat-value">Leichty Micro 3 Channel, 27MHz</div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standalone Description Card - Full Width -->
+        <div class="content-section">
+            <p>Update December 27, 2005: Using a new, lighter 10mAh battery from Koichi Tanaka the Midge is now down to 0.845 grams, and it still flies! I believe this is a new world record for the lightest electric-powered radio-controlled plane.</p><p>At last! A radio-controlled plane under 1 gram. Here's Martin's Midge - wing span 3.2", weight 0.98 grams, two channels, 27 MHz radio.</p><p>Just about everything had to be re-engineered to get below a gram - the only "standard" part is the incredible Leichty Micro 3 channel receiver at a nominal 100mg, see http://microflierradio.com/ . Everything else, from the prop to the actuator had to be rebuilt several times to achieve the needed weights. I'm particularly pleased with my 2mg on-off switch that is easier to use than a plug and socket and much much lighter.</p><p>The prop is basically the same as on the Mosquito - direct drive 1" diameter by 0.6" pitch carbon, left handed, and thinned down. The motor is based on a 4mm x 8mm, 28 ohm pager with no case, no flux ring, and the magnet ground down. Also the bushing was replaced with a plastic one, with the original brass bearings, and the shaft was replaced with a carbon fiber rod. The battery is a 10maH lithium poly, reduced by careful trimming down to 530mg. The actuator coil is 1/16" ID, 135 ohms with a 1mm diameter by 0.5mm N50 magnet. The airframe is 0.010" carbon rod for the fuselage stick, and 0.005" carbon for the flying surfaces. Covering is 2um mylar, and the rudder is 1/100" balsa.</p><p>Getting below 1 gram was much harder than I anticipated. I owe a lot to David de Wit whose 0.94 gram Elfin, http://members.dodo.net.au/~daviddewit/ , showed that it can be done, and gave me ideas of what component weights I had to aim for. It should be noted that the Elfin has three channels of control, whereas the Midge has only two. Also the Elfin is controlled by infra-red while the Midge is radio controlled.</p><p>I called it Martin's Midge because it sounds like a midge in flight - that little direct-drive prop really screams, but quietly, at 20,000rpm. It takes about 85mA and generates about 0.5g thrust.</p><p>The definitive maiden flight was on Tuesday, October 25. After some initial porpoising it settled down to really stable flight at about 4mph. It did several circuits and a figure of eight. Flying time was a couple of minutes, and I landed before it ran out of power, so it could have gone longer. After recharging we had a second flight and captured some of it on video, though this time the flight was cut short by a bad glitch. No damage though.</p><p>I've been working towards this for several months and it's a relief to have got there. The next challenge is to reduce the weight just a little further so I can add a third channel, though it's not really necessary. I'm sure I can take weight out of the airframe. The horizontal stabilizer is designed to accomodate an elevator and the receiver already provides 3 channels. The added weight will be only about 20mg so it should be possible, as David de Wit has shown.</p><p>Your browser does not support the video tag. Download Midge.wmv</p>
+        </div>
+
+        <section class="specs-section"><div class="specs-grid"><div class="spec-card"><h3>Dimensions</h3><div class="spec-row"><span class="spec-label">Wingspan</span><span class="spec-value">3.2" (8.1 cm) [3.5" flat]</span></div><div class="spec-row"><span class="spec-label">Chord</span><span class="spec-value">1.3" (3.3 cm)</span></div><div class="spec-row"><span class="spec-label">Wing Area</span><span class="spec-value">4.1 sq.in (26.5 sq.cm)</span></div><div class="spec-row"><span class="spec-label">Weight</span><span class="spec-value">0.03 oz (0.845 grams)</span></div><div class="spec-row"><span class="spec-label">Wing Loading</span><span class="spec-value">1.05 oz/sq.ft (3.23 g/sq.dm)</span></div></div><div class="spec-card"><h3>Propulsion</h3><div class="spec-row"><span class="spec-label">Stripped motor</span><span class="spec-value">Rudder only</span></div><div class="spec-row"><span class="spec-label">Gears</span><span class="spec-value">None - Direct Drive</span></div><div class="spec-row"><span class="spec-label">Propellor</span><span class="spec-value">1" x 0.6" (25mm x 15.2mm) homemade carbon on computer-designed blank, left-handed</span></div><div class="spec-row"><span class="spec-label">With lighter battery</span><span class="spec-value">Now weighs 0.845 grams</span></div></div><div class="spec-card"><h3>Electronics</h3><div class="spec-row"><span class="spec-label">Radio</span><span class="spec-value">Leichty Micro 3 Channel, 27MHz</span></div><div class="spec-row"><span class="spec-label">Control</span><span class="spec-value">Rudder, Throttle</span></div><div class="spec-row"><span class="spec-label">Antenna</span><span class="spec-value">4" 38awg copper wire</span></div><div class="spec-row"><span class="spec-label">Receiver</span><span class="spec-value">100mg</span></div></div><div class="spec-card"><h3>Construction</h3><div class="spec-row"><span class="spec-label">Construction</span><span class="spec-value">Carbon rod, fuselage stick 0.010" (0.25 mm), wing and tail 0.005" (0.13mm). Covering 2 um, 2.2 g/m^2 mylar</span></div><div class="spec-row"><span class="spec-label">Airframe+act+switch</span><span class="spec-value">115mg</span></div></div></div></section>
+        <section class="content-section"><h2 class="section-title">Image Gallery</h2><div class="gallery-grid"><div class="gallery-item"><a href="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Mosq-2871-60.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Mosq-2871-60.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Tripe3-2573-60.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Tripe3-2573-60.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2907-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2907-100.jpg" alt="Midge"></a><div class="gallery-caption">Midge</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2909-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2909-100.jpg" alt="Front"></a><div class="gallery-caption">Front</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2911-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2911-100.jpg" alt="3.2" Wingspan"></a><div class="gallery-caption">3.2" Wingspan</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2949-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2949-100.jpg" alt="0.980 grams"></a><div class="gallery-caption">0.980 grams</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2917-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2917-100.jpg" alt="Stripped motor"></a><div class="gallery-caption">Stripped motor</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2919-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2919-100.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2925-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2925-100.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-2928-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-2928-100.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-069-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-069-100.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-071-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-071-100.jpg" alt="Lloyd ready to launch"></a><div class="gallery-caption">Lloyd ready to launch</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-072-640_.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-072-100_.jpg" alt="There she goes!"></a><div class="gallery-caption">There she goes!</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-073-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-073-100.jpg" alt="Spot the plane"></a><div class="gallery-caption">Spot the plane</div></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-3059-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-3059-100.jpg" alt=""></a></div><div class="gallery-item"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Pictures/Midge-3066-640.jpg" target="_blank"><img src="/web/20150504115753im_/http://mnewell.rchomepage.com/Images/Midge-3066-100.jpg" alt=""></a></div></div></section>
+        <section class="content-section"><h2 class="section-title">Videos</h2><div class="videos-grid"><div class="video-card"><h3>Midge.wmv</h3><video controls><source src="/web/20150504115753/http://mnewell.rchomepage.com/Videos/Midge.wmv"></video><a href="/web/20150504115753/http://mnewell.rchomepage.com/Videos/Midge.wmv" download class="download-btn"><ion-icon name="download-outline"></ion-icon> Download</a></div></div></section>
+        <section class="content-section"><h2 class="section-title">Plans & Downloads</h2><div style="display: flex; flex-wrap: wrap; gap: 1rem;"><a href="/web/20150504115753/http://mnewell.rchomepage.com/Plans/MIDGE.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download MIDGE.pdf</a><a href="/web/20150504115753/http://mnewell.rchomepage.com/Techniques/WireSwitch.pdf" class="download-btn" style="margin-right: 1rem;"><ion-icon name="document-outline"></ion-icon> Download WireSwitch.pdf</a></div></section>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body></html>
