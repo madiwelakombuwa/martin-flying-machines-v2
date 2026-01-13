@@ -1,0 +1,26 @@
+name = "martin-flying-machines"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Assets configuration for static files
+[assets]
+directory = "."
+binding = "ASSETS"
+
+# Exclude specific files/directories from asset upload
+[assets.exclude]
+patterns = [
+  "node_modules/**",
+  ".git/**",
+  "src/**",
+  "package.json",
+  "package-lock.json",
+  "wrangler.toml",
+  ".gitignore",
+  "DEPLOYMENT.md"
+]
+
+# Route configuration (uncomment and modify when deploying)
+# [[routes]]
+# pattern = "yourdomain.com/*"
+# zone_name = "yourdomain.com"
